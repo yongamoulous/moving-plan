@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>이사 준비 마스터 플랜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f1e7d6; --card:#fbf5ea; --card-2:#f6eedd;
+  --ink:#28231d; --ink-soft:#6f655a; --ink-faint:#9b9081;
+  --line:#ddccae; --line-soft:#e8dcc4;
+  --clay:#c2572f; --clay-deep:#9b3f1f;   /* 새집 */
+  --pine:#2f6f5c; --pine-deep:#1f5645;   /* 현재집 */
+  --ochre:#aa7a26; --ochre-deep:#876016; /* 자금 */
+  --brick:#a3331c;                        /* 긴급 */
+  --ok:#3d7a4e;
+  --shadow:0 1px 2px rgba(60,40,20,.06), 0 8px 28px -12px rgba(80,50,20,.18);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"IBM Plex Sans KR",sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  position:relative;
+}
+/* paper grain */
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+  opacity:.06;mix-blend-mode:multiply;
+}
+.wrap{position:relative;z-index:1;max-width:920px;margin:0 auto;padding:0 22px 120px}
+
+/* ---------- header ---------- */
+header{padding:64px 0 36px;text-align:center}
+.eyebrow{font-size:.74rem;letter-spacing:.42em;text-transform:uppercase;color:var(--clay);font-weight:600;margin-bottom:18px}
+h1{font-family:"Gowun Batang",serif;font-weight:700;font-size:clamp(2.6rem,7vw,4.4rem);line-height:1.04;letter-spacing:-.01em}
+h1 .thin{font-weight:400;font-style:italic;color:var(--ink-soft)}
+.subtitle{margin-top:18px;color:var(--ink-soft);font-size:1.02rem}
+.meta{margin-top:22px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;font-size:.8rem}
+.meta span{background:var(--card);border:1px solid var(--line);border-radius:100px;padding:5px 14px;color:var(--ink-soft)}
+.rule{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:8px 0 0}
+
+/* ---------- section ---------- */
+section{margin-top:62px;animation:rise .7s both}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:26px}
+.sec-num{font-family:"IBM Plex Mono",monospace;font-size:.82rem;color:var(--clay);border:1px solid var(--clay);border-radius:50%;width:30px;height:30px;display:grid;place-items:center;flex:none}
+.sec-head h2{font-family:"Gowun Batang",serif;font-size:1.9rem;font-weight:700;letter-spacing:-.01em}
+.sec-head p{color:var(--ink-faint);font-size:.86rem;margin-left:auto;text-align:right}
+
+/* ---------- urgent banner ---------- */
+.urgent{
+  background:var(--brick);color:#f6e9df;border-radius:16px;padding:30px 32px;
+  box-shadow:0 18px 40px -18px rgba(120,30,10,.6);position:relative;overflow:hidden;
+}
+.urgent::after{content:"5/27";position:absolute;right:-8px;top:-22px;font-family:"Gowun Batang",serif;font-size:8rem;font-weight:700;color:rgba(255,255,255,.07);letter-spacing:-.05em}
+.urgent .tag{display:inline-block;background:#f6e9df;color:var(--brick);font-weight:700;font-size:.72rem;letter-spacing:.2em;padding:4px 11px;border-radius:6px}
+.urgent h3{font-family:"Gowun Batang",serif;font-size:1.6rem;margin:14px 0 6px;color:#fff}
+.urgent .lead{color:#eccdb9;font-size:.94rem;margin-bottom:18px;position:relative;z-index:1}
+.urgent .cols{display:grid;grid-template-columns:1fr 1fr;gap:26px;position:relative;z-index:1}
+@media(max-width:640px){.urgent .cols{grid-template-columns:1fr}}
+.urgent h4{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:#e6b59c;margin-bottom:10px;border-bottom:1px solid rgba(255,255,255,.18);padding-bottom:6px}
+
+/* ---------- checklist ---------- */
+ul.check{list-style:none}
+ul.check li{position:relative;padding:7px 0 7px 30px;font-size:.93rem;border-bottom:1px dashed var(--line-soft)}
+ul.check.onbrick li{border-bottom-color:rgba(255,255,255,.12);color:#f2e4d8}
+ul.check li:last-child{border-bottom:none}
+.chk{position:absolute;left:0;top:9px;width:18px;height:18px;border:1.6px solid var(--ink-faint);border-radius:5px;cursor:pointer;background:transparent;transition:.18s;flex:none}
+.onbrick .chk{border-color:#dcae97}
+.chk:hover{border-color:var(--clay)}
+.chk.done{background:var(--clay);border-color:var(--clay)}
+.onbrick .chk.done{background:#f6e9df;border-color:#f6e9df}
+.chk.done::after{content:"";position:absolute;left:5px;top:1px;width:5px;height:10px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(42deg)}
+.onbrick .chk.done::after{border-color:var(--brick)}
+li.checked > span.txt{text-decoration:line-through;color:var(--ink-faint)}
+.onbrick li.checked > span.txt{color:#c79a82}
+.txt b{font-weight:600}
+.hot{color:var(--brick);font-weight:700}
+
+/* ---------- status chips ---------- */
+.chips{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.chip{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:16px 18px;box-shadow:var(--shadow);border-left:4px solid var(--line)}
+.chip.s-hot{border-left-color:var(--brick)}
+.chip.s-warn{border-left-color:var(--ochre)}
+.chip.s-ok{border-left-color:var(--ok)}
+.chip .st{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.s-hot .st{color:var(--brick)} .s-warn .st{color:var(--ochre-deep)} .s-ok .st{color:var(--ok)}
+.chip .ti{font-weight:600;font-size:.97rem;margin-bottom:4px}
+.chip .ds{font-size:.82rem;color:var(--ink-soft)}
+
+/* ---------- timeline ---------- */
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:26px;font-size:.82rem}
+.legend span{display:flex;align-items:center;gap:7px;color:var(--ink-soft)}
+.dot{width:11px;height:11px;border-radius:50%}
+.d-clay{background:var(--clay)} .d-pine{background:var(--pine)} .d-ochre{background:var(--ochre)}
+.timeline{position:relative;padding-left:8px}
+.timeline::before{content:"";position:absolute;left:92px;top:6px;bottom:6px;width:2px;background:var(--line)}
+@media(max-width:560px){.timeline::before{left:62px}}
+.tl{position:relative;display:grid;grid-template-columns:84px 1fr;gap:28px;padding:10px 0}
+@media(max-width:560px){.tl{grid-template-columns:54px 1fr;gap:18px}}
+.tl .date{text-align:right;font-family:"IBM Plex Mono",monospace;font-size:.82rem;color:var(--ink-soft);padding-top:14px;font-weight:500}
+.tl .node{position:relative}
+.tl .node::before{content:"";position:absolute;left:-44px;top:18px;width:14px;height:14px;border-radius:50%;background:var(--paper);border:3px solid var(--clay);z-index:2}
+@media(max-width:560px){.tl .node::before{left:-37px}}
+.tl.t-pine .node::before{border-color:var(--pine)}
+.tl.t-ochre .node::before{border-color:var(--ochre)}
+.tl.t-gate .node::before{border-color:var(--ink-faint);background:var(--ink-faint)}
+.tcard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;box-shadow:var(--shadow);transition:transform .2s ease,box-shadow .2s ease}
+.tcard:hover{transform:translateX(4px);box-shadow:0 10px 30px -14px rgba(80,50,20,.32)}
+.t-clay .tcard{border-left:4px solid var(--clay)}
+.t-pine .tcard{border-left:4px solid var(--pine)}
+.t-ochre .tcard{border-left:4px solid var(--ochre)}
+.t-gate .tcard{border-left:4px solid var(--ink-faint);background:var(--card-2);border-style:dashed}
+.tcard .lbl{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.t-clay .lbl{color:var(--clay-deep)} .t-pine .lbl{color:var(--pine-deep)} .t-ochre .lbl{color:var(--ochre-deep)} .t-gate .lbl{color:var(--ink-soft)}
+.tcard .th{font-family:"Gowun Batang",serif;font-size:1.12rem;font-weight:700;margin:3px 0 3px}
+.tcard .td{font-size:.85rem;color:var(--ink-soft)}
+
+/* sequence strip */
+.seq{display:flex;align-items:center;gap:6px;flex-wrap:wrap;background:var(--card-2);border:1px dashed var(--clay);border-radius:12px;padding:16px 18px;margin-top:18px}
+.seq b{background:var(--clay);color:#fff;border-radius:7px;padding:6px 12px;font-size:.84rem;font-weight:600}
+.seq i{color:var(--clay);font-style:normal;font-weight:700}
+.seq .note{flex-basis:100%;font-size:.82rem;color:var(--ink-soft);margin-top:8px}
+
+/* ---------- money table ---------- */
+.tablecard{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th,td{padding:11px 16px;text-align:left;border-bottom:1px solid var(--line-soft)}
+thead th{background:var(--card-2);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+td.num,th.num{text-align:right;font-family:"IBM Plex Mono",monospace}
+tr.hl td{background:#f6ecdb;font-weight:600}
+tr.zero td{color:var(--brick)}
+tr.last td{border-bottom:none}
+td .neg{color:var(--clay-deep)} td .pos{color:var(--pine-deep)}
+.fnote{font-size:.8rem;color:var(--ink-faint);margin-top:12px;font-family:"IBM Plex Mono",monospace}
+.callout{background:var(--card-2);border-left:4px solid var(--ochre);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:18px;font-size:.9rem}
+.callout b{color:var(--ochre-deep)}
+
+/* ---------- generic cards grid ---------- */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:680px){.grid2{grid-template-columns:1fr}}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;box-shadow:var(--shadow)}
+.panel.pine{border-top:5px solid var(--pine)}
+.panel.clay{border-top:5px solid var(--clay)}
+.panel h3{font-family:"Gowun Batang",serif;font-size:1.3rem;margin-bottom:4px}
+.panel .sub{font-size:.82rem;color:var(--ink-faint);margin-bottom:14px}
+.panel h4{font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin:16px 0 8px}
+
+/* buy cards */
+.buygrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.buy{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:18px;box-shadow:var(--shadow);position:relative}
+.buy .badge{position:absolute;top:14px;right:14px;font-size:.66rem;font-weight:700;letter-spacing:.06em;padding:3px 9px;border-radius:100px;text-transform:uppercase}
+.b-done{background:#e3f0e4;color:var(--ok)}
+.b-todo{background:#f3e3d6;color:var(--clay-deep)}
+.b-new{background:var(--brick);color:#fff}
+.buy h4{font-family:"Gowun Batang",serif;font-size:1.18rem;margin-bottom:4px;padding-right:60px}
+.buy .chk-list{list-style:none;font-size:.83rem;color:var(--ink-soft);margin-top:8px}
+.buy .chk-list li{padding-left:14px;position:relative;margin-top:3px}
+.buy .chk-list li::before{content:"·";position:absolute;left:2px;color:var(--clay);font-weight:700}
+
+/* dispose table */
+.disp td,.disp th{font-size:.86rem}
+.disp tbody td:not(:first-child){color:var(--ink-faint);font-style:italic}
+
+/* ---------- weeks (accordion) ---------- */
+.weeks{display:flex;flex-direction:column;gap:12px}
+.week{background:var(--card);border:1px solid var(--line);border-radius:13px;overflow:hidden;box-shadow:var(--shadow)}
+.week summary{list-style:none;cursor:pointer;padding:16px 20px;display:flex;align-items:center;gap:14px;user-select:none}
+.week summary::-webkit-details-marker{display:none}
+.week .wn{font-family:"Gowun Batang",serif;font-size:1.5rem;color:var(--clay);width:30px;flex:none}
+.week .wt{font-weight:600}
+.week .wd{font-size:.8rem;color:var(--ink-faint);font-family:"IBM Plex Mono",monospace}
+.week .prog{margin-left:auto;font-size:.76rem;color:var(--ink-soft);background:var(--card-2);border:1px solid var(--line);border-radius:100px;padding:3px 11px;font-family:"IBM Plex Mono",monospace;flex:none}
+.week .arrow{transition:transform .25s;color:var(--ink-faint);flex:none}
+.week[open] .arrow{transform:rotate(90deg)}
+.week .body{padding:2px 20px 18px 20px;border-top:1px solid var(--line-soft)}
+.tagchip{display:inline-block;font-size:.64rem;font-weight:700;letter-spacing:.05em;padding:1px 7px;border-radius:5px;margin-right:7px;vertical-align:middle;transform:translateY(-1px)}
+.g-hot{background:#f5dcd4;color:var(--brick)} .g-clay{background:#f3e2d4;color:var(--clay-deep)}
+.g-pine{background:#dceae3;color:var(--pine-deep)} .g-ochre{background:#f1e6c9;color:var(--ochre-deep)}
+.lock{color:var(--ink-faint);font-size:.78rem}
+
+/* toolbar */
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:14px;background:var(--card-2);border:1px dashed var(--line);border-radius:11px;padding:12px 18px;font-size:.83rem;color:var(--ink-soft);margin-bottom:18px}
+.toolbar button{font-family:inherit;font-size:.8rem;background:transparent;border:1px solid var(--ink-faint);color:var(--ink-soft);border-radius:8px;padding:6px 13px;cursor:pointer;transition:.15s}
+.toolbar button:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+footer{margin-top:80px;text-align:center;font-size:.8rem;color:var(--ink-faint);border-top:1px solid var(--line);padding-top:28px}
+
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+section:nth-of-type(1){animation-delay:.04s}
+section:nth-of-type(2){animation-delay:.10s}
+section:nth-of-type(3){animation-delay:.16s}
+.tl{animation:rise .6s both}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Moving Plan · 2026</div>
+    <h1>이사 준비<br><span class="thin">마스터 플랜</span></h1>
+    <p class="subtitle">두 채를 동시에 — <b>새집</b>으로 들어가고, <b>현재집</b>은 전세로 내놓는다.</p>
+    <div class="meta">
+      <span>📅 갱신 2026-05-26</span>
+      <span>🏠 새집 이사 6/22(잠정)</span>
+      <span>🔑 현재집 보증금 6/29</span>
+    </div>
+    <div class="rule"></div>
+  </header>
+
+  <!-- URGENT -->
+  <section>
+    <div class="urgent">
+      <span class="tag">D-1 · 가장 임박</span>
+      <h3>내일 5/27(수) 세입자 전세 계약</h3>
+      <p class="lead">계약 자리에서 <b>두고 갈 것 / 치워줄 것</b>을 확정해야 그 뒤 당근 처분이 굴러갑니다.</p>
+      <div class="cols">
+        <div>
+          <h4>세입자와 확정할 것</h4>
+          <ul class="check onbrick">
+            <li><span class="chk" data-k="u1"></span><span class="txt"><b>두고 가길 원하는 품목</b> (에어컨·붙박이장·커튼/블라인드·조명·쿡탑/후드·냉장고/세탁기·가구·비데·도어락)</span></li>
+            <li><span class="chk" data-k="u2"></span><span class="txt"><b>치워주길 원하는 품목</b> (위에서 빠진 것 전부)</span></li>
+            <li><span class="chk" data-k="u3"></span><span class="txt">두고 갈 품목은 <b>계약서 특약에 목록 명시</b> — 분쟁 예방</span></li>
+            <li><span class="chk" data-k="u4"></span><span class="txt">잔금일(=세입자 입주일) 확정 — 6/29 보증금과 일치?</span></li>
+          </ul>
+        </div>
+        <div>
+          <h4>놓치지 말 것</h4>
+          <ul class="check onbrick">
+            <li><span class="chk" data-k="u5"></span><span class="txt">원상복구 범위(못자국·벽)·입주청소 책임 합의</span></li>
+            <li><span class="chk" data-k="u6"></span><span class="txt">보증금 보호: 세입자 확정일자·전입신고, 전세보증보험, 등기부등본 제공</span></li>
+            <li><span class="chk" data-k="u7"></span><span class="txt">계약 후 → 새 가전과 겹치는 기존 가전은 <b>당근 판매</b> 대상 (4번)</span></li>
+            <li><span class="chk" data-k="u8"></span><span class="txt">두고 갈 품목 → 새집 구매 목록에서 빼도 되는지 재확인</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 0. status -->
+  <section>
+    <div class="sec-head"><span class="sec-num">00</span><h2>핵심 미확정 사항</h2><p>먼저 정해야<br>나머지가 굴러감</p></div>
+    <div class="chips">
+      <div class="chip s-hot"><div class="st">🔴 D-1</div><div class="ti">5/27 세입자 계약</div><div class="ds">두고 갈/치워줄 품목 확정 → 당근 처분의 출발점</div></div>
+      <div class="chip s-warn"><div class="st">⚠️ 확인 필요</div><div class="ti">전 집주인 퇴거일 (새집)</div><div class="ds">빈 집이 돼야 수리·청소·이사 시작. 이사 날짜의 진짜 출발점</div></div>
+      <div class="chip s-warn"><div class="st">⚠️ 잠정</div><div class="ti">이사일 6/22 확정 여부</div><div class="ds">모든 일정의 기준점</div></div>
+      <div class="chip s-ok"><div class="st">✅ 방향 확정</div><div class="ti">이사·수리·가전 비용 자금</div><div class="ds">주식·암호화폐 정리로 충당 (2번)</div></div>
+      <div class="chip s-ok"><div class="st">✅ 확정</div><div class="ti">매트리스 / 프레임</div><div class="ds">LK(라지킹) → 프레임도 LK로 매칭</div></div>
+    </div>
+  </section>
+
+  <!-- 1. timeline -->
+  <section>
+    <div class="sec-head"><span class="sec-num">01</span><h2>마스터 타임라인</h2><p>두 집 + 자금<br>한 줄기로</p></div>
+    <div class="legend">
+      <span><i class="dot d-clay"></i> 새집 (이사 들어갈 곳)</span>
+      <span><i class="dot d-pine"></i> 현재집 (전세 놓는 곳)</span>
+      <span><i class="dot d-ochre"></i> 자금</span>
+    </div>
+    <div class="timeline">
+      <div class="tl t-ochre"><div class="date">5/25</div><div class="node"><div class="tcard"><div class="lbl">자금</div><div class="th">대출 9,900만원 실행</div><div class="td">신용대출·주담대 청산(6,000)에 사용</div></div></div></div>
+      <div class="tl t-pine"><div class="date">5/27 수</div><div class="node"><div class="tcard"><div class="lbl">현재집 · 🔴</div><div class="th">세입자 전세 계약</div><div class="td">두고 갈 / 치워줄 품목 확정 (계약 특약 명시)</div></div></div></div>
+      <div class="tl t-pine"><div class="date">5/28~</div><div class="node"><div class="tcard"><div class="lbl">현재집</div><div class="th">당근 처분 목록 게시</div><div class="td">판매에 시간 걸리니 빨리 — 단, 픽업은 6/22 이후로 약속</div></div></div></div>
+      <div class="tl t-clay"><div class="date">6월<br>초중순</div><div class="node"><div class="tcard"><div class="lbl">새집</div><div class="th">업체 계약 · 가전 주문</div><div class="td">이삿짐·화장실 수리·입주청소 계약 / 가전 5종 주문 (배송일=입주일)</div></div></div></div>
+      <div class="tl t-gate"><div class="date">미정 ⚠️</div><div class="node"><div class="tcard"><div class="lbl">관문 · 새집</div><div class="th">전 집주인 퇴거</div><div class="td">→ 화장실 수리(2~3일) → 입주청소. 이 순서 고정</div></div></div></div>
+      <div class="tl t-ochre"><div class="date">6/19 금</div><div class="node"><div class="tcard"><div class="lbl">자금</div><div class="th">쥐 대출 1억 실행</div><div class="td">자산정리 4천 포함 → 이 시점 보유 현금 0</div></div></div></div>
+      <div class="tl t-clay"><div class="date">6/22 월</div><div class="node"><div class="tcard"><div class="lbl">새집 · 📦 D-day</div><div class="th">이사 + 가전 설치</div><div class="td">침대프레임 조립·가스 연결 / (현재집) 당근 픽업·잔여 반출 시작</div></div></div></div>
+      <div class="tl t-pine"><div class="date">6/29 월</div><div class="node"><div class="tcard"><div class="lbl">현재집 + 자금</div><div class="th">보증금 1.65억 수령 · 세입자 입주</div><div class="td">대출 9,900 상환 → 잔액 6,600 투자 운용</div></div></div></div>
+    </div>
+    <div class="seq">
+      <b>전 집주인 퇴거</b><i>→</i><b>화장실 수리</b><i>→</i><b>입주청소</b><i>→</i><b>이사·짐 입고</b><i>→</i><b>가전 설치</b>
+      <span class="note">⛓️ 절대 바뀌면 안 되는 순서. 6/22 이사라면 수리·청소 역산 시 <b>전 집주인은 늦어도 6/16~6/18 퇴거</b> 필요.</span>
+    </div>
+  </section>
+
+  <!-- 2. money -->
+  <section>
+    <div class="sec-head"><span class="sec-num">02</span><h2>자금 계획</h2><p>검산 완료 ✅<br>정합성 OK</p></div>
+    <div class="tablecard">
+      <table>
+        <thead><tr><th>시점</th><th>내역</th><th class="num">증감</th><th class="num">보유 현금</th></tr></thead>
+        <tbody>
+          <tr><td>5/25</td><td>대출 실행</td><td class="num"><span class="pos">+9,900</span></td><td class="num">9,900</td></tr>
+          <tr><td>5/25</td><td>주담대 포함 신용대출 청산</td><td class="num"><span class="neg">−6,000</span></td><td class="num">3,900</td></tr>
+          <tr><td>–</td><td>기 보유 현금 합산</td><td class="num"><span class="pos">+600</span></td><td class="num">4,500</td></tr>
+          <tr><td>–</td><td>계약금 수령</td><td class="num"><span class="pos">+1,500</span></td><td class="num">6,000</td></tr>
+          <tr><td>~6/19</td><td>다른 자산 정리 (주식·코인)</td><td class="num"><span class="pos">+4,000</span></td><td class="num">10,000</td></tr>
+          <tr class="zero"><td>6/19</td><td><b>쥐에게 대출 (총 1억)</b></td><td class="num"><span class="neg">−10,000</span></td><td class="num"><b>0</b></td></tr>
+          <tr><td>6/29</td><td>전세보증금 수령</td><td class="num"><span class="pos">+16,500</span></td><td class="num">16,500</td></tr>
+          <tr><td>6/29</td><td>대출 9,900 상환</td><td class="num"><span class="neg">−9,900</span></td><td class="num">6,600</td></tr>
+          <tr class="hl last"><td>이후</td><td><b>잔액 → 투자 운용</b></td><td class="num">–</td><td class="num"><b>6,600</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fnote">단위: 만원 · 검산 9,900−6,000=3,900 → +600+1,500=6,000 → +4,000=10,000 → 16,500−9,900=6,600 ✓</p>
+    <div class="callout">
+      <b>이사 비용은 별도 재원으로.</b> 6/19에 보유 현금이 0이 되므로, 이사·수리·청소·가전(합계 ≈1,000만원)은 <b>주식·암호화폐를 추가로 정리</b>해 충당.
+      쥐 대출용 4,000 + 이사비 ≈1,000 → <b>~5,000만원을 6월 중순까지 현금화</b>(거래소 출금 지연 감안, 분할 매도로 급매 방지). 당근 판매대금만큼 가전 순지출은 줄어듭니다.
+    </div>
+  </section>
+
+  <!-- 3 & 4 panels -->
+  <section>
+    <div class="sec-head"><span class="sec-num">03</span><h2>두 집, 각자의 할 일</h2><p>새집은 채우고<br>현재집은 넘긴다</p></div>
+    <div class="grid2">
+      <div class="panel clay">
+        <h3>🏠 새집</h3>
+        <div class="sub">수리 · 청소 · 이사 (들어갈 곳)</div>
+        <h4>수리 / 청소</h4>
+        <ul class="check">
+          <li><span class="chk" data-k="n1"></span><span class="txt">화장실 수리 견적 (범위·금액·소요 2~3일)</span></li>
+          <li><span class="chk" data-k="n2"></span><span class="txt"><span class="lock">🔒</span> 수리 일정을 [퇴거→청소→이사] 사이에 끼워넣기</span></li>
+          <li><span class="chk" data-k="n3"></span><span class="txt">입주청소 예약 (수리 종료 다음날)</span></li>
+        </ul>
+        <h4>이사</h4>
+        <ul class="check">
+          <li><span class="chk" data-k="n4"></span><span class="txt">이삿짐센터 3곳 방문견적 → 포장이사·계약</span></li>
+          <li><span class="chk" data-k="n5"></span><span class="txt">엘리베이터/사다리차 예약</span></li>
+          <li><span class="chk" data-k="n6"></span><span class="txt">인터넷·TV 이전, 도시가스 전출/전입 예약</span></li>
+          <li><span class="chk" data-k="n7"></span><span class="txt">전입신고+확정일자, 주소 이전(은행·카드·보험)</span></li>
+        </ul>
+      </div>
+      <div class="panel pine">
+        <h3>🔑 현재집</h3>
+        <div class="sub">세입자 인계 · 당근 처분 (내놓는 곳)</div>
+        <h4>인계 원칙</h4>
+        <ul class="check">
+          <li><span class="chk" data-k="c1"></span><span class="txt">두고 갈 품목 = <b>계약 특약 목록만</b>. 나머지는 입주(6/29) 전 반출</span></li>
+        </ul>
+        <h4>당근 처분</h4>
+        <ul class="check">
+          <li><span class="chk" data-k="c2"></span><span class="txt">처분 목록 확정 (5/28까지)</span></li>
+          <li><span class="chk" data-k="c3"></span><span class="txt">사진·설명 작성해 게시 — <b>"6/22 이후 수령"</b> 명시</span></li>
+          <li><span class="chk" data-k="c4"></span><span class="txt">안 팔리면 대형폐기물 스티커 (백업)</span></li>
+        </ul>
+        <h4>기존 품목 처리표 <span style="font-weight:400;text-transform:none;color:var(--ink-faint)">(계약 후 채우기)</span></h4>
+        <div class="tablecard" style="margin-top:6px">
+          <table class="disp">
+            <thead><tr><th>품목</th><th>두고?</th><th>처리</th></tr></thead>
+            <tbody>
+              <tr><td>냉장고</td><td>—</td><td>당근/폐기/이전?</td></tr>
+              <tr><td>세탁기</td><td>—</td><td>당근/폐기/이전?</td></tr>
+              <tr><td>에어컨</td><td>—</td><td>두고/철거?</td></tr>
+              <tr class="last"><td>가구류</td><td>—</td><td>당근/폐기?</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. buy list -->
+  <section>
+    <div class="sec-head"><span class="sec-num">04</span><h2>구매 리스트 · 새집</h2><p>배송일 =<br>입주일로</p></div>
+    <div class="buygrid">
+      <div class="buy"><span class="badge b-done">완료</span><h4>매트리스</h4><div class="td" style="font-size:.85rem;color:var(--ink-soft)">LK · 라지킹 (약 1700×2000mm)</div></div>
+      <div class="buy"><span class="badge b-todo">예정</span><h4>침대프레임</h4><ul class="chk-list"><li>LK 전용 프레임으로 매칭</li><li>방 좌우 통로 확보</li><li>현관·복도 반입 치수</li></ul></div>
+      <div class="buy"><span class="badge b-new">신규</span><h4>스탠딩 데스크</h4><ul class="chk-list"><li>전동(높이메모리) vs 수동 결정</li><li>상판 폭·깊이 → 방 배치 실측</li><li>전동이면 전용 콘센트 위치</li><li>모니터암·선정리 트레이 호환</li></ul></div>
+      <div class="buy"><span class="badge b-todo">예정</span><h4>세탁기 / 건조기</h4><ul class="chk-list"><li>직수·배수 위치, 전용 콘센트</li><li>건조기 스팀 급수</li><li>직렬설치 키트</li></ul></div>
+      <div class="buy"><span class="badge b-todo">예정</span><h4>냉장고</h4><ul class="chk-list"><li>설치폭·높이</li><li>현관·통로 반입 치수, 방문 통과</li><li>힌지 여유</li></ul></div>
+      <div class="buy"><span class="badge b-todo">예정</span><h4>식기세척기</h4><ul class="chk-list"><li>빌트인 vs 프리스탠딩</li><li>급·배수 분기, 전기</li><li>싱크대 공간</li></ul></div>
+      <div class="buy"><span class="badge b-todo">예정</span><h4>에어드레서</h4><ul class="chk-list"><li>콘센트 위치</li><li>도어 개폐 공간</li><li>(모델별) 급수 방식</li></ul></div>
+    </div>
+    <div class="callout" style="border-left-color:var(--clay)"><b>타이밍 원칙</b> — 인기 모델(냉장고·건조기)은 리드타임 1~2주라 <b>늦어도 6월 초중순 주문</b>. 주문 전 설치 위치 실측 필수(특히 냉장고 폭·반입 동선).</div>
+  </section>
+
+  <!-- 6. weeks -->
+  <section>
+    <div class="sec-head"><span class="sec-num">05</span><h2>주차별 할 일</h2><p>체크는 자동 저장<br>(이 브라우저)</p></div>
+    <div class="toolbar">
+      <span>✅ 체크 상태는 이 브라우저에 저장됩니다.</span>
+      <button id="reset">전체 초기화</button>
+    </div>
+    <div class="weeks">
+      <details class="week" open>
+        <summary><span class="wn">①</span><span><span class="wt">이번 주</span> <span class="wd">5/26(화)~5/31</span></span><span class="prog" data-prog></span><span class="arrow">▸</span></summary>
+        <div class="body"><ul class="check">
+          <li><span class="chk" data-k="w11"></span><span class="txt"><span class="tagchip g-hot">긴급</span><b class="hot">5/27 세입자 계약</b> — 두고 갈/치워줄 품목 확정</span></li>
+          <li><span class="chk" data-k="w12"></span><span class="txt"><span class="tagchip g-pine">현재집</span>5/28 당근 처분 목록 확정 → 게시(픽업 6/22 이후)</span></li>
+          <li><span class="chk" data-k="w13"></span><span class="txt"><span class="tagchip g-clay">새집</span><span class="lock">🔒</span> 전 집주인 퇴거일 확인</span></li>
+          <li><span class="chk" data-k="w14"></span><span class="txt"><span class="tagchip g-clay">새집</span>이삿짐센터 3곳 방문견적 예약</span></li>
+          <li><span class="chk" data-k="w15"></span><span class="txt"><span class="tagchip g-clay">새집</span>화장실 수리 견적 문의 + 입주청소 알아보기</span></li>
+          <li><span class="chk" data-k="w16"></span><span class="txt"><span class="tagchip g-clay">구매</span>가전 설치 위치 실측 / LK 프레임·스탠딩데스크 후보</span></li>
+          <li><span class="chk" data-k="w17"></span><span class="txt"><span class="tagchip g-ochre">자금</span>매도할 주식·코인 목록·금액 계획 (~5,000)</span></li>
+        </ul></div>
+      </details>
+      <details class="week">
+        <summary><span class="wn">②</span><span><span class="wt">확정·주문</span> <span class="wd">6/1(월)~6/7</span></span><span class="prog" data-prog></span><span class="arrow">▸</span></summary>
+        <div class="body"><ul class="check">
+          <li><span class="chk" data-k="w21"></span><span class="txt"><span class="tagchip g-clay">새집</span>이삿짐센터 계약 / 수리 업체·일정 확정 / 입주청소 예약</span></li>
+          <li><span class="chk" data-k="w22"></span><span class="txt"><span class="tagchip g-clay">구매</span>가전 5종 모델 확정 → 주문 / 침대프레임·스탠딩데스크 주문</span></li>
+          <li><span class="chk" data-k="w23"></span><span class="txt"><span class="tagchip g-ochre">자금</span>자산 분할 매도 시작 (급매 방지)</span></li>
+        </ul></div>
+      </details>
+      <details class="week">
+        <summary><span class="wn">③</span><span><span class="wt">준비·현금화</span> <span class="wd">6/8(월)~6/14</span></span><span class="prog" data-prog></span><span class="arrow">▸</span></summary>
+        <div class="body"><ul class="check">
+          <li><span class="chk" data-k="w31"></span><span class="txt"><span class="tagchip g-clay">새집</span>짐 싸기 시작, 버릴 짐·대형폐기물 스티커 신청</span></li>
+          <li><span class="chk" data-k="w32"></span><span class="txt"><span class="tagchip g-clay">새집</span>인터넷·TV 이전, 도시가스 전출/전입 예약</span></li>
+          <li><span class="chk" data-k="w33"></span><span class="txt"><span class="tagchip g-ochre">자금</span>자산 현금화 ~완료 (출금 지연 감안)</span></li>
+          <li><span class="chk" data-k="w34"></span><span class="txt"><span class="tagchip g-clay">새집</span><span class="lock">🔒</span> 퇴거 시점에 맞춰 수리 착수일 최종 확정</span></li>
+        </ul></div>
+      </details>
+      <details class="week">
+        <summary><span class="wn">④</span><span><span class="wt">수리→청소→이사 직전</span> <span class="wd">6/15(월)~6/21</span></span><span class="prog" data-prog></span><span class="arrow">▸</span></summary>
+        <div class="body"><ul class="check">
+          <li><span class="chk" data-k="w41"></span><span class="txt"><span class="tagchip g-clay">새집</span><span class="lock">🔒</span> 화장실 수리(2~3일) → 입주청소</span></li>
+          <li><span class="chk" data-k="w42"></span><span class="txt"><span class="tagchip g-ochre">자금</span><b>6/19(금) 쥐에게 1억 대출 실행</b></span></li>
+          <li><span class="chk" data-k="w43"></span><span class="txt"><span class="tagchip g-clay">새집</span>짐 싸기 마무리, 귀중품·서류 별도 분리</span></li>
+          <li><span class="chk" data-k="w44"></span><span class="txt"><span class="tagchip g-pine">현재집</span>당근 안 팔린 품목 폐기 일정 잡기</span></li>
+        </ul></div>
+      </details>
+      <details class="week">
+        <summary><span class="wn">⑤</span><span><span class="wt">📦 이사 D-day</span> <span class="wd">6/22(월)</span></span><span class="prog" data-prog></span><span class="arrow">▸</span></summary>
+        <div class="body"><ul class="check">
+          <li><span class="chk" data-k="w51"></span><span class="txt"><span class="tagchip g-clay">새집</span>이사 + 가전 배송·설치 + 침대/데스크 조립 + 가스 연결</span></li>
+          <li><span class="chk" data-k="w52"></span><span class="txt"><span class="tagchip g-pine">현재집</span>당근 픽업·잔여 짐 반출 시작 (빈 집)</span></li>
+        </ul></div>
+      </details>
+      <details class="week">
+        <summary><span class="wn">⑥</span><span><span class="wt">정착·인계 준비</span> <span class="wd">6/23~6/28</span></span><span class="prog" data-prog></span><span class="arrow">▸</span></summary>
+        <div class="body"><ul class="check">
+          <li><span class="chk" data-k="w61"></span><span class="txt"><span class="tagchip g-clay">새집</span>전입신고+확정일자, 주소 이전, 하자·누락 점검</span></li>
+          <li><span class="chk" data-k="w62"></span><span class="txt"><span class="tagchip g-pine">현재집</span>치워줄 품목 반출 완료 + 두고 갈 품목만 남기기</span></li>
+        </ul></div>
+      </details>
+      <details class="week">
+        <summary><span class="wn">⑦</span><span><span class="wt">정산·운용</span> <span class="wd">6/29(월)~</span></span><span class="prog" data-prog></span><span class="arrow">▸</span></summary>
+        <div class="body"><ul class="check">
+          <li><span class="chk" data-k="w71"></span><span class="txt"><span class="tagchip g-pine">현재집</span>세입자 입주 + 전세보증금 1.65억 수령</span></li>
+          <li><span class="chk" data-k="w72"></span><span class="txt"><span class="tagchip g-ochre">자금</span>대출 9,900 상환 → 잔액 6,600 투자 운용 시작</span></li>
+          <li><span class="chk" data-k="w73"></span><span class="txt">잔여 행정·가전 AS 마무리</span></li>
+        </ul></div>
+      </details>
+    </div>
+  </section>
+
+  <footer>이사 준비 마스터 플랜 · 살아있는 문서 · 진행하며 계속 갱신하세요</footer>
+
+</div>
+
+<script>
+const KEY='moving-plan-2026';
+function load(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return {}}}
+function save(s){localStorage.setItem(KEY,JSON.stringify(s))}
+let state=load();
+
+function applyOne(box){
+  const k=box.dataset.k, li=box.closest('li');
+  const on=!!state[k];
+  box.classList.toggle('done',on);
+  if(li) li.classList.toggle('checked',on);
+}
+function updateProgress(){
+  document.querySelectorAll('.week').forEach(w=>{
+    const boxes=w.querySelectorAll('.chk');
+    const done=[...boxes].filter(b=>b.classList.contains('done')).length;
+    const tag=w.querySelector('[data-prog]');
+    if(tag) tag.textContent=done+' / '+boxes.length;
+  });
+}
+document.querySelectorAll('.chk').forEach(box=>{
+  applyOne(box);
+  box.addEventListener('click',()=>{
+    const k=box.dataset.k;
+    state[k]=!state[k];
+    if(!state[k]) delete state[k];
+    save(state); applyOne(box); updateProgress();
+  });
+});
+updateProgress();
+document.getElementById('reset').addEventListener('click',()=>{
+  if(confirm('모든 체크를 초기화할까요?')){
+    state={}; save(state);
+    document.querySelectorAll('.chk').forEach(applyOne);
+    updateProgress();
+  }
+});
+</script>
+</body>
+</html>
