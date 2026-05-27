@@ -449,9 +449,9 @@ section:nth-of-type(3){animation-delay:.16s}
 
   <!-- 6. 수정요청 -->
   <section>
-    <div class="sec-head"><span class="sec-num">06</span><h2>수정 요청</h2><p>15분마다<br>점검·반영</p></div>
+    <div class="sec-head"><span class="sec-num">06</span><h2>수정 요청</h2><p>6시간마다<br>점검·반영</p></div>
     <div class="panel">
-      <p class="sub">바꿀 내용을 적어 보내면 15분 안에 반영됩니다.</p>
+      <p class="sub">바꿀 내용을 적어 보내면 6시간 안에 반영됩니다.</p>
       <textarea id="reqText" rows="3" placeholder="예: 전 집주인 퇴거일 6/17로 확정" style="width:100%;font-family:inherit;font-size:.92rem;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--card-2);color:var(--ink);resize:vertical"></textarea>
       <div style="margin-top:10px;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
         <button id="reqSend" style="font-family:inherit;font-weight:600;background:var(--clay);color:#fff;border:none;border-radius:9px;padding:9px 20px;cursor:pointer">요청 보내기</button>
@@ -472,7 +472,7 @@ section:nth-of-type(3){animation-delay:.16s}
       try{
         const r=await fetch(EP,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({request:v})});
         const d=await r.json();
-        if(d.ok){s.textContent='접수됨 (#'+d.number+'). 15분 내 반영됩니다.';t.value='';}
+        if(d.ok){s.textContent='접수됨 (#'+d.number+'). 6시간 내 반영됩니다.';t.value='';}
         else{s.textContent='처리할 수 없는 요청입니다.';}
       }catch(e){s.textContent='네트워크 오류';}
       finally{b.disabled=false;}
